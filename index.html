@@ -119,6 +119,20 @@
     </div>
     <!--/ Abstract. -->
 
+    <!-- Motivation. -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Motivation</h2>
+        <div class="content has-text-justified">
+          <p>
+            With the scaling and advancement of large Speech Language Models like GPT-4o, challenges related to inference latency and memory efficiency remain significant bottlenecks. While many cost-saving techniques for text-only and vision-language models focus on Key-Value (KV) cache compression and token reduction strategies, these methods cannot be directly applied to speech modalities due to the unique characteristics of speech signals.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+    <!--/ Motivation. -->
+
     <!-- Methodology. -->
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -151,65 +165,31 @@
             Experimental results on WavLLM and Qwen-Audio demonstrate that FastAdaSP achieves significant improvements in both memory efficiency and computational speed. Specifically, FastAdaSP achieved a 7x increase in memory efficiency and a 1.83x increase in decoding throughput compared to baseline methods, without any degradation in task performance.
           </p>
           <p>
-            For dense tasks like Automatic Speech Recognition (ASR), FastAdaSP maintained high accuracy while reducing computational costs by up to 50%. In Speech Translation (ST), the framework effectively balanced the efficiency-performance trade-off, demonstrating only minor degradation in BLEU scores at high reduction levels. For sparse tasks such as Emotion Recognition (ER) and Speaker Verification (SV), FastAdaSP even improved task accuracy by focusing the model's attention on the most informative tokens.
+            For dense tasks like Automatic Speech Recognition (ASR), FastAdaSP maintained high accuracy while reducing computational costs by up to 50%. In Speech Translation (ST), the framework effectively balanced the efficiency-performance trade-off, demonstrating only minor degradation in BLEU scores at high reduction levels. For sparse tasks such as Emotion Recognition (ER) and Spoken Question Answer (SQA), FastAdaSP even improved task accuracy by focusing the model's attention on the most informative tokens.
           </p>
           <p>
             The experiments also highlighted the robustness of FastAdaSP's weighted merge strategy, which outperformed traditional token pruning methods by preserving essential content while reducing redundancy. The use of Transfer Entropy-based layer selection further improved the performance of sparse tasks by ensuring that token reduction occurred at optimal stages, minimizing information loss. Overall, FastAdaSP sets a new benchmark in multitask SpeechLM efficiency, combining state-of-the-art performance with practical applicability across multiple speech-related tasks.
           </p>
+          <p>
+            Computational Cost experiments results show that FastAdaSP can also decrease both pre-filling and decoding latency at about 4% and 50% on A100 and H100 GPU.
+          </p>
+          
           <!-- Experiment Tables -->
-          <div class="table-container">
-            <h3 class="title is-4">Dense Task Performance on Qwen-Audio (ASR & ST)</h3>
-            <table class="table is-fullwidth is-bordered">
-              <thead>
-                <tr>
-                  <th>Task</th>
-                  <th>Baseline WER (%)</th>
-                  <th>FastAdaSP WER (%)</th>
-                  <th>Reduction in FLOPs (%)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Automatic Speech Recognition (ASR)</td>
-                  <td>2.21</td>
-                  <td>3.57</td>
-                  <td>40</td>
-                </tr>
-                <tr>
-                  <td>Speech Translation (ST)</td>
-                  <td>41.46 (BLEU)</td>
-                  <td>39.81 (BLEU)</td>
-                  <td>40</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="has-text-centered">
+            <img src="./static/images/table1.png" alt="table1" style="max-width: 100%; height: auto; margin-top: 20px;">
+            <p class="has-text-weight-bold">Table 1: Comparison between FastAdaSP with other token reduction methods on WavLLM dense tasks.</p>
           </div>
-          <div class="table-container">
-            <h3 class="title is-4">Sparse Task Performance on Qwen-Audio (ER & SV)</h3>
-            <table class="table is-fullwidth is-bordered">
-              <thead>
-                <tr>
-                  <th>Task</th>
-                  <th>Baseline Accuracy (%)</th>
-                  <th>FastAdaSP Accuracy (%)</th>
-                  <th>Reduction in FLOPs (%)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Emotion Recognition (ER)</td>
-                  <td>72.80</td>
-                  <td>73.65</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>Speaker Verification (SV)</td>
-                  <td>67.60</td>
-                  <td>68.70</td>
-                  <td>50</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="has-text-centered">
+            <img src="./static/images/table2.png" alt="table2" style="max-width: 100%; height: auto; margin-top: 20px;">
+            <p class="has-text-weight-bold">Table 2: Comparison between FastAdaSP with other token reduction methods on WavLLM sparse tasks.</p>
+          </div>
+          <div class="has-text-centered">
+            <img src="./static/images/table3.png" alt="table3" style="max-width: 100%; height: auto; margin-top: 20px;">
+            <p class="has-text-weight-bold">Table 3: Long Sequence Computational cost experiments on A100. Long sequence audio samples (120s and 240s) input on WavLLM using one A100 80GB GPU.</p>
+          </div>
+          <div class="has-text-centered">
+            <img src="./static/images/table4.png" alt="table4" style="max-width: 100%; height: auto; margin-top: 20px;">
+            <p class="has-text-weight-bold">Table 4: Long Sequence Computational cost experiments on H100. Long sequence audio samples (120s and 240s) input on WavLLM using one H100 80GB GPU.</p>
           </div>
         </div>
       </div>
