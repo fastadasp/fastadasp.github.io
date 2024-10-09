@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/logo.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -63,6 +63,9 @@
             <img src="./static/images/logo.png" alt="FastAdaSP Logo" width="50" height="50">
             FastAdaSP: Multitask-Adapted Efficient Inference for Large Speech Language Model
           </h1>
+          <h2 class="subtitle is-4 publication-subtitle" style="color: red;"> 
+            EMNLP 2024
+          </h2>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://yichen14.github.io/">Yichen Lu</a><sup>1*</sup>,</span>
@@ -79,6 +82,9 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Carnegie Mellon University</span>
             <span class="author-block"><sup>2</sup>NVIDIA Research</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
           </div>
 
           <div class="column has-text-centered">
@@ -136,6 +142,10 @@
           <p>
             The core of FastAdaSP's methodology is a weighted token merge process that calculates similarity scores between adjacent audio tokens and merges them based on these weights. This technique preserves important information while discarding redundant elements, significantly improving memory and computational efficiency. Additionally, FastAdaSP incorporates layer selection mechanisms to ensure that token merging is performed at the most appropriate stages of the model, further optimizing performance.
           </p>
+          <div class="has-text-centered">
+            <img src="./static/images/method.png" alt="Weighted Token Merge Method Diagram" style="max-width: 100%; height: auto; margin-top: 20px;">
+            <p class="is-italic">Figure 1: Diagram illustrating the weighted token merge process in FastAdaSP.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -215,6 +225,22 @@
     </div>
     <!--/ Experiments & Results. -->
   </div>
+<!-- Conclusion. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Conclusion</h2>
+        <div class="content has-text-justified">
+          <p>
+            FastAdaSP demonstrates that multitask-adapted efficient inference is achievable in large Speech Language Models without sacrificing performance. By leveraging weighted token merging and adaptive layer selection, FastAdaSP significantly reduces computational complexity while maintaining or even improving task accuracy across various speech-related applications. The framework sets a new standard for efficient model adaptation, making it highly suitable for deployment in resource-constrained environments. Future work will focus on expanding the applicability of FastAdaSP to other modalities and enhancing its scalability for even larger models.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </section>
 
 <section class="section" id="BibTeX">
@@ -233,7 +259,7 @@
   <div class="container">
     <div class="content has-text-centered">
       <p>
-        <img src="./static/images/logo.png" alt="FastAdaSP Logo" width="50" height="50">
+        <img src="./static/images/logo.png" alt="FastAdaSP Logo" width="200" height="200">
       </p>
       <p>
         This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
